@@ -1,0 +1,168 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "_version": "1.3.0",
+        "id": "sap.ui.demo.fiori2",
+        "title": "Ordenes de mantenimiento",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0"
+        },
+        "ach": "ach",
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ords",
+                    "action": "Display",
+                    "title": "Ordenes de Mantenimiento",
+                    "icon": "sap-icon://eam-work-order"
+                }
+            }
+        },
+        "sap.cloud": {
+            "public": true,
+            "service": "ords_mnto_module"
+        },
+        "dataSources": {
+            "Z_ORDENES_MANTENIMIENTO_SRV": {
+                "uri": "/sap/opu/odata/sap/Z_ORDENES_MANTENIMIENTO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/Z_ORDENES_MANTENIMIENTO_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.3.0",
+        "supportedThemes": [
+            "sap_fiori_3"
+        ],
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "_version": "1.2.0",
+        "rootView": {
+            "viewName": "sap.ui.demo.fiori2.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "fcl"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "config": {
+            "fullWidth": true,
+            "sapFiori2Adaptation": true
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "sap.ui.demo.fiori2.view",
+                "controlId": "flexibleColumnLayout",
+                "transition": "slide",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": ":layout:",
+                    "name": "master",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "detail/{orden}/{layout}",
+                    "name": "detail",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "detailDetail/{orden}/{operacion}/{layout}",
+                    "name": "detailDetail",
+                    "target": [
+                        "master",
+                        "detail",
+                        "detailDetail"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "detail": {
+                    "viewName": "Detail",
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailDetail": {
+                    "viewName": "DetailDetail",
+                    "controlAggregation": "endColumnPages"
+                }
+            }
+        },
+        "models": {
+            "ModelOrdenes": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "Z_ORDENES_MANTENIMIENTO_SRV"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "style/style.css"
+                }
+            ]
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    }
+}

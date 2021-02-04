@@ -1,0 +1,111 @@
+{
+    "resources": [
+        {
+            "name": "../Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../view/Utilities/HelloDialog.js"
+        },
+        {
+            "name": "../view/Utilities/FormuladoraMaterial.controller.js"
+        },
+        {
+            "name": "../view/Utilities/Formuladora.controller.js"
+        },
+        {
+            "name": "../controller/Master.controller.js"
+        },
+        {
+            "name": "../controller/DetailDetail.controller.js"
+        },
+        {
+            "name": "../controller/Detail.controller.js"
+        },
+        {
+            "name": "../controller/BaseController.js"
+        },
+        {
+            "name": "../controller/App.controller.js"
+        },
+        {
+            "name": "../manifest.json"
+        },
+        {
+            "name": "../Component.js"
+        },
+        {
+            "name": "../manifest-bundle.zip"
+        },
+        {
+            "name": "../Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "../serviceBinding.js"
+        },
+        {
+            "name": "../view/Utilities/FormuladoraMaterial-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../view/Utilities/Formuladora-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../controller/Master-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../controller/DetailDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../controller/Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "../serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../view/Utilities/HelloDialog-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../../../../sap-ui-version.json"
+        },
+        {
+            "name": "../style/style.css"
+        },
+        {
+            "name": "../view/Master.view.xml"
+        },
+        {
+            "name": "../view/DetailDetail.view.xml"
+        },
+        {
+            "name": "../view/Detail.view.xml"
+        },
+        {
+            "name": "../view/App.view.xml"
+        },
+        {
+            "name": "../index.html"
+        },
+        {
+            "name": "../fioriHtmlRunner.html"
+        },
+        {
+            "name": "../extended_runnable_file.html"
+        }
+    ]
+}

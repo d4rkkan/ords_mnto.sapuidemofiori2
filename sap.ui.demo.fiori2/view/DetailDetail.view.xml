@@ -1,0 +1,102 @@
+<mvc:View
+	controllerName="sap.ui.demo.fiori2.controller.DetailDetail"
+	xmlns:uxap="sap.uxap"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:unified="sap.ui.unified">
+	
+
+	<Page title="Verificacion sensor defectuoso" showHeader="true" showFooter="true" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<IconTabBar id="ictBar" expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+				selectedKey="Ok">
+				<items>
+					<IconTabFilter id="ictFilterOp" icon="sap-icon://detail-view" iconColor="Positive" text="Detalle Operacion" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false" key="Op" >
+						<content>
+							<form:SimpleForm maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12" emptySpanL="0"
+								emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<Label text="ID Operacion"/>
+									<Text text="{detOperation>/IdOperacion}"  />
+									<Label text="Horas Teoricas"/>
+									<Text text="{detOperation>/TiempoTeorico} Horas"/>
+									<Label text="Horas Reales"/>
+									<Input
+									id="inputHorasReales"
+									type="Number"
+									placeholder="Ingrese las Horas Reales ..."
+									value="{detOperation>/TiempoReal}"
+									class="sapUiSmallMarginBottom" 
+									enabled="{= ${detOperation>/CompOp} === 'X' ? false : true}" />
+									<Label text="Notas"/>
+									<TextArea id="textAreaWithoutBinding" value="{detOperation>/Nota}" showExceededText="true" maxLength="40" width="100%" liveChange="handleLiveChange" enabled="{= ${detOperation>/CompOp} === 'X' ? false : true}" valueState="Warning" valueLiveUpdate="true"/>
+								</form:content>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>
+					<IconTabSeparator icon="" iconDensityAware="false"/>
+					<IconTabFilter id="ictFilterRep" icon="sap-icon://wrench" iconColor="Neutral" text="Componentes" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false"  key="Rep" >
+						<content>
+							<Table id="repuestosTable" items="{/lstItemsRepuestos}" width="auto" noDataText="No data"
+								mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+								<infoToolbar/>
+								<headerToolbar/>
+								<columns>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Id Componente" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Cant. Sugerida" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Cant. Real" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Inactive"  press=".onSupplierPress">
+										<cells>
+											<ObjectIdentifier text="{IdComponente}"/>
+											<ObjectIdentifier text="{CantSugerida}"/>
+											<Input value="{CantReal}" type="Number" enabled="{= ${CompRep} === 'X' ? false : true}" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+				</items>
+				<content>
+					<Text text="Tab Bar Content goes here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+						visible="true"/>
+				</content>
+			</IconTabBar>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+				<!--	<Button text="Capturar QR" type="Emphasized" icon="sap-icon://bar-code" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false"/>-->
+					<ToolbarSpacer width=""/>
+					<Button text="Guardar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onPressGuardarRepuestos"/>
+					<Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onNavBack" />
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+	</Page>
+
+	
+</mvc:View>
